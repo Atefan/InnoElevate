@@ -14,7 +14,7 @@ int findDown(char mask) {
     return -1;
 }
 
-int pack::get_next_floor(int cur_f)
+int queue::get_next_floor(int cur_f)
 {
 		if (up == true)
     {
@@ -46,17 +46,17 @@ int pack::get_next_floor(int cur_f)
     }
 }
 
-void pack::add(int f)
+void queue::add(int f)
 {
 	building |= 1 << f;
 }
 
-void pack::remove(int floor)
+void queue::remove(int floor)
 {
 	building &= ~(1 << floor);
 }
 
-bool pack::is_empty() { return !(building & ((1 << num_floors)-1)); }
+bool queue::is_empty() { return !(building & ((1 << num_floors)-1)); }
 
 
 

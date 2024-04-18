@@ -6,21 +6,27 @@ hw::hw(int n_floors, int* calc, int speed, int _1, int _2, int tr, int echo) :tr
 	pinMode(trig, OUTPUT);
 	pinMode(echo, INPUT);
 }
-
+void hw::stop()
+{
+  
+	digitalWrite(LED_BUILTIN, LOW);
+  this->speed = 0;
+}
 void hw::go_to(int floor, int cur_floor)
 {
 	if (floor == cur_floor)
 		return;
 	if (floor > cur_floor)
-		move_M_up();
+		move_M_up(global);
 	else
-		move_M_down();
+		move_M_down(global);
 	while (finished(floor, get_distance()))
 	{
 		delay(5);
 
 		update_floor();
 	}
+  stop();
 }
 int hw::update_floor()
 {
@@ -37,7 +43,7 @@ int hw::update_floor()
 
 bool hw::finished(int target, int dist)
 {
-	return dist == arr[target];
+	return dist >= arr[target] - 0.5 || dist <= arr[target] + 0.5;
 }
 
 float hw::get_distance()
@@ -52,17 +58,19 @@ float hw::get_distance()
 	return (duration / 2) / 29.1;
 }
 
-void hw::move_M_up()
+void hw::move_M_up(int value)
 {
+	digitalWrite(LED_BUILTIN, HIGH);
 	digitalWrite(_1, HIGH);
 	digitalWrite(_2, LOW);
-	analogWrite(speed, 255);
+	analogWrite(speed, value);
 }
-void hw::move_M_down()
+void hw::move_M_down(int value)
 {
+	digitalWrite(LED_BUILTIN, HIGH);
 	digitalWrite(_1, LOW);
 	digitalWrite(_2, HIGH);
-	analogWrite(speed, 255);
+	analogWrite(speed, value);
 }
 
 
