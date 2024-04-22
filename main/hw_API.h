@@ -3,28 +3,28 @@ extern int global;
 struct hw
 {
 public:
-	int cur_f;
-	hw(int n_floors, int* calc, int speed, int _1, int _2, int tr, int echo);
-	void go_to(int floor, int cur_floor);
+
+  int cur_f;
+	int n_floors;
+	hw(int n_floors, float* calc, int speed, int _1, int _2, int tr, int echo);
+	void go_to(int floor);
 	float get_distance();
 
   
-	void move_M_up(int value);
+	void move_M_up(int );
 
-	void move_M_down(int value);
+	void move_M_down(int );
   
 	void stop();
+	bool is_going_up(int);
 
 private:
 	int speed, _1, _2;
 	int trig, echo;
-	int n_floors;
-	int* arr;
+	float* arr;
 
 
-	int update_floor();
-
-	bool finished(int target, int dist);
+	bool finished(int , float ,bool );
 
 
 

@@ -14,9 +14,9 @@ int findDown(char mask) {
     return -1;
 }
 
-int queue::get_next_floor(int cur_f)
+int queue::get_next_floor(int cur_f, bool is_upping)
 {
-		if (up == true)
+		if (is_upping == true)
     {
 			building >>= cur_f;
 		  unsigned long index;
@@ -26,7 +26,7 @@ int queue::get_next_floor(int cur_f)
 		  else
       {
 			  building <<= 7 - cur_f;
-        up = !up;
+        is_upping = !is_upping;
         return findDown(building);
       }
     }
@@ -40,7 +40,7 @@ int queue::get_next_floor(int cur_f)
 		  else
       {
 			  building >>= cur_f;
-        up = !up;
+        is_upping = !is_upping;
         return findUp(building);
       }
     }
