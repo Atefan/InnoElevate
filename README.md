@@ -1,7 +1,7 @@
 # InnoElevate
 An arduino 
 
-TUESFEST 2024 Project: Smart Cabin Controller
+##TUESFEST 2024 Project: Smart Cabin Controller
 Welcome to the GitHub repository for our TUESFEST 2024 project, the Smart Cabin Controller. This project leverages the power and versatility of the Arduino Uno to create an intelligent cabin control system. The system includes a DC motor, a 12V generator, eight buttons, and an ultrasonic sensor to determine the exact location of the cabin.
 
 Project Overview
